@@ -35,11 +35,9 @@ func move_player():
 	hook_vel = Vector2.ZERO
 	hooks = tree.get_nodes_in_group("hooks")
 	for hook in hooks:
-		if Input.is_action_just_pressed("release_hooks"):
-			hook.queue_free()
-		elif hook.connected:
+		if hook.connected:
 			hook.get_node("Connector").global_position = global_position
-			if hook.flying == false:
+			if not hook.flying:
 				hook_vel -= (position - hook.position).normalized()
 	
 	velocity = (hook_vel * SPEED)
@@ -53,7 +51,7 @@ func move_player():
 
 func spawn_arrows():
 	if Input.is_action_just_pressed("arrow"):
-		if can_shoot and Global.attacking == false and get_parent() != null:
+		if can_shoot and not Global.attacking and get_parent() != null:
 			get_parent().add_child(Global.new_arrow(position, rotation, 0))
 			can_shoot = false
 			$ArrowCooldown.start()

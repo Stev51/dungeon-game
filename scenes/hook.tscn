@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1r1qkh1bdbnq"]
+[gd_scene load_steps=5 format=3 uid="uid://c1r1qkh1bdbnq"]
 
 [ext_resource type="Script" path="res://scenes/hook.gd" id="1_2rg5f"]
 [ext_resource type="Texture2D" uid="uid://dgmmhfu7teqsh" path="res://art/hook.png" id="1_to2l7"]
-[ext_resource type="Texture2D" uid="uid://brqjgt1keywib" path="res://art/heart1.png" id="3_ki0oc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_er1pn"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_721ll"]
+radius = 3.0
 
 [node name="Hook" type="Area2D" groups=["hooks"]]
 script = ExtResource("1_2rg5f")
@@ -20,11 +25,17 @@ points = PackedVector2Array(0, 0, 0, 0)
 width = 6.0
 default_color = Color(0.498039, 0, 0, 1)
 
-[node name="Connector" type="Node2D" parent="."]
-z_index = 9
+[node name="Connector" type="Area2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Connector"]
-texture = ExtResource("3_ki0oc")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Connector"]
+shape = SubResource("CircleShape2D_er1pn")
+
+[node name="DespawnCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DespawnCollision"]
+shape = SubResource("CircleShape2D_721ll")
 
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="DespawnCollision" to="." method="_on_despawn_collision_area_entered"]
+[connection signal="body_entered" from="DespawnCollision" to="." method="_on_despawn_collision_body_entered"]

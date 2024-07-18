@@ -33,6 +33,7 @@ walls=""
 doors=""
 screen=""
 hooks=""
+player=""
 
 [input]
 

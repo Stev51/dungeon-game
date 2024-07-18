@@ -6,7 +6,7 @@ func _ready():
 func _process(delta):
 	
 	if Input.is_action_just_pressed("attack"):
-		if Global.attacking == false:
+		if not Global.attacking:
 			$AnimationPlayer.play("attack")
 			Global.attacking = true
 			visible = true
