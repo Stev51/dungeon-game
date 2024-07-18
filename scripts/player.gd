@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
+const HOOK_SPEED = 300.0
 
 var tree
 var vel = Vector2.ZERO
+var hook_vel = Vector2.ZERO
 var can_shoot = true
 var hooks
+var diff
 
 func _ready():
 	tree = get_tree()
@@ -13,7 +16,6 @@ func _ready():
 
 func _physics_process(delta):
 	move_player()
-	process_hooks()
 	spawn_arrows()
 	spawn_hooks()
 	screen_update()
@@ -30,19 +32,22 @@ func move_player():
 	if Input.is_action_pressed("ui_up"):
 		vel.y -= 1
 	
-	velocity = vel.normalized() * SPEED
+	hook_vel = Vector2.ZERO
+	hooks = tree.get_nodes_in_group("hooks")
+	for hook in hooks:
+		if Input.is_action_just_pressed("release_hooks"):
+			hook.queue_free()
+		else:
+			diff = position - hook.position
+			hook.get_node("Line2D").set_point_position(1, diff)
+			hook_vel -= diff.normalized()
+	
+	velocity = (vel.normalized() * SPEED) + (hook_vel * SPEED)
 	
 	if vel.length() > 0:
-		rotation = velocity.angle()
+		rotation = vel.angle()
 	
 	move_and_slide()
-
-func process_hooks():
-	
-	hooks = tree.get_nodes_in_group("hooks")
-	
-	for hook in hooks:
-		hook.get_node("Line2D").set_point_position(1, position)
 
 func spawn_arrows():
 	if Input.is_action_just_pressed("arrow"):
