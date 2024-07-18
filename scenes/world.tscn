@@ -300,7 +300,7 @@ polygon = PackedVector2Array(1575, -950, 1600, -950, 1600, -850, 1575, -850)
 position = Vector2(800, 1200)
 polygon = PackedVector2Array(1575, -950, 1600, -950, 1600, -850, 1575, -850)
 
-[node name="CurrentScreen" type="Area2D" parent="."]
+[node name="CurrentScreen" type="Area2D" parent="." groups=["screen"]]
 position = Vector2(400, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScreen"]

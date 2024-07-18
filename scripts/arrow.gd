@@ -21,3 +21,7 @@ func _on_despawn_collision_body_entered(body):
 func _on_body_entered(body):
 	if flying:
 		pass #do dmg (this if statement disables non-flying arrows from damaging)
+
+func _on_despawn_collision_area_exited(area):
+	if area.is_in_group("screen"):
+		queue_free()

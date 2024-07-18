@@ -20,4 +20,5 @@ texture = ExtResource("1_swu37")
 polygon = PackedVector2Array(24, -2, 22, -4, 13, -4, 13, 4, 22, 4, 24, 2)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_exited" from="DespawnCollision" to="." method="_on_despawn_collision_area_exited"]
 [connection signal="body_entered" from="DespawnCollision" to="." method="_on_despawn_collision_body_entered"]
