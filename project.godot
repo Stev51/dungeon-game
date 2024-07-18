@@ -28,6 +28,9 @@ window/stretch/mode="viewport"
 [global_group]
 
 sword=""
+colliders=""
+walls=""
+doors=""
 
 [input]
 

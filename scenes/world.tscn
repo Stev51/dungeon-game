@@ -105,7 +105,7 @@ rotation = 4.71239
 visible = false
 z_index = -1
 
-[node name="WallCollisions" type="StaticBody2D" parent="."]
+[node name="WallCollisions" type="StaticBody2D" parent="." groups=["colliders", "walls"]]
 
 [node name="Walls1" type="CollisionPolygon2D" parent="WallCollisions"]
 polygon = PackedVector2Array(25, -1175, 775, -1175, 775, -625, 450, -625, 450, -575, 775, -575, 775, -350, 825, -350, 825, -575, 1150, -575, 1150, -625, 825, -625, 825, -1175, 1575, -1175, 1575, -950, 1625, -950, 1625, -1175, 1950, -1175, 1950, -1200, 2050, -1200, 2050, -1175, 2375, -1175, 2375, -625, 1625, -625, 1625, -850, 1575, -850, 1575, -625, 1250, -625, 1250, -575, 1575, -575, 1575, -200, 1625, -200, 1625, -575, 2375, -575, 2375, -500, 2425, -500, 2425, -575, 2750, -575, 2750, -625, 2425, -625, 2425, -1175, 3175, -1175, 3175, -625, 2850, -625, 2850, -575, 3175, -575, 3175, -25, 2850, -25, 2850, 25, 3175, 25, 3175, 575, 2425, 575, 2425, 350, 2375, 350, 2375, 575, 1625, 575, 1625, 350, 1575, 350, 1575, 575, 825, 575, 825, 25, 1150, 25, 1150, -25, 825, -25, 825, -250, 775, -250, 775, -25, 450, -25, 450, 25, 775, 25, 775, 575, 450, 575, 450, 600, 3200, 600, 3200, -1200, 2125, -1200, 2125, -1225, 1875, -1225, 1875, -1200, 0, -1200, 0, 600, 350, 600, 350, 575, 25, 575, 25, 25, 350, 25, 350, -25, 25, -25, 25, -575, 350, -575, 350, -625, 25, -625)
@@ -266,3 +266,31 @@ polygon = PackedVector2Array(387, -913, 387, -888, 412, -888, 412, -913)
 [node name="Objects6" type="CollisionPolygon2D" parent="WallCollisions"]
 position = Vector2(2400, 1200)
 polygon = PackedVector2Array(387, -913, 387, -888, 412, -888, 412, -913)
+
+[node name="DoorCollisions" type="StaticBody2D" parent="." groups=["colliders", "doors"]]
+
+[node name="Doors1" type="CollisionPolygon2D" parent="DoorCollisions"]
+polygon = PackedVector2Array(350, 575, 350, 600, 450, 600, 450, 575)
+
+[node name="Doors2" type="CollisionPolygon2D" parent="DoorCollisions"]
+position = Vector2(0, -1175)
+polygon = PackedVector2Array(350, 575, 350, 600, 450, 600, 450, 575)
+
+[node name="Doors3" type="CollisionPolygon2D" parent="DoorCollisions"]
+position = Vector2(800, -1175)
+polygon = PackedVector2Array(350, 575, 350, 600, 450, 600, 450, 575)
+
+[node name="Doors4" type="CollisionPolygon2D" parent="DoorCollisions"]
+position = Vector2(2400, -600)
+polygon = PackedVector2Array(350, 575, 350, 600, 450, 600, 450, 575)
+
+[node name="Doors5" type="CollisionPolygon2D" parent="DoorCollisions"]
+position = Vector2(2400, -1200)
+polygon = PackedVector2Array(350, 575, 350, 600, 450, 600, 450, 575)
+
+[node name="Doors6" type="CollisionPolygon2D" parent="DoorCollisions"]
+polygon = PackedVector2Array(1575, -950, 1600, -950, 1600, -850, 1575, -850)
+
+[node name="Doors7" type="CollisionPolygon2D" parent="DoorCollisions"]
+position = Vector2(800, 1200)
+polygon = PackedVector2Array(1575, -950, 1600, -950, 1600, -850, 1575, -850)
