@@ -19,6 +19,7 @@ shape = SubResource("CircleShape2D_eqnfm")
 position = Vector2(200, 0)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+rotation_smoothing_enabled = true
 
 [node name="ArrowCooldown" type="Timer" parent="."]
 one_shot = true
