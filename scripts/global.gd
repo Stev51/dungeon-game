@@ -15,3 +15,12 @@ func new_arrow(pos, rot, shot):
 	arrow.shooter = shot
 	
 	return arrow
+
+func new_hook(pos, rot):
+	
+	var hook = preload("res://scenes/hook.tscn").instantiate()
+	
+	hook.position = pos
+	hook.rotation = rot
+	
+	return hook

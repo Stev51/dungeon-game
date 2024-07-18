@@ -84,7 +84,7 @@ sources/3 = SubResource("TileSetAtlasSource_lp3tf")
 sources/4 = SubResource("TileSetAtlasSource_krhyq")
 sources/5 = SubResource("TileSetAtlasSource_145ee")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_evh5l"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbauc"]
 size = Vector2(800, 600)
 
 [node name="World" type="Node2D"]
@@ -304,4 +304,4 @@ polygon = PackedVector2Array(1575, -950, 1600, -950, 1600, -850, 1575, -850)
 position = Vector2(400, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScreen"]
-shape = SubResource("RectangleShape2D_evh5l")
+shape = SubResource("RectangleShape2D_jbauc")

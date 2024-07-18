@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1r1qkh1bdbnq"]
+
+[ext_resource type="Script" path="res://scenes/hook.gd" id="1_2rg5f"]
+[ext_resource type="Texture2D" uid="uid://dgmmhfu7teqsh" path="res://art/hook.png" id="1_to2l7"]
+
+[node name="Hook" type="Area2D" groups=["hooks"]]
+script = ExtResource("1_2rg5f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 0)
+texture = ExtResource("1_to2l7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(10, 0)
+polygon = PackedVector2Array(4, -8, 9, -8, 9, 8, 4, 8)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 6.0
+default_color = Color(0.498039, 0, 0, 1)
+
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
