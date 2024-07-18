@@ -4,14 +4,18 @@ const SPEED = 600.0
 
 var velocity
 var flying = true
+var connected = true
 
 func _ready():
 	velocity = Vector2(1, 0).rotated(rotation)
 
 func _physics_process(delta):
-	$Line2D.global_rotation_degrees = 0
+	print($Connector.global_position)
+	$Line2D.set_point_position(1, $Connector.position)
 	if flying:
 		position += velocity * SPEED * delta
+	elif position.is_equal_approx($Connector.position):
+		queue_free()
 
 func _on_body_entered(body):
 	if body.is_in_group("colliders"):

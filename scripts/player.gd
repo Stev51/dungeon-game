@@ -37,12 +37,14 @@ func move_player():
 	for hook in hooks:
 		if Input.is_action_just_pressed("release_hooks"):
 			hook.queue_free()
-		else:
-			diff = position - hook.position
-			hook.get_node("Line2D").set_point_position(1, diff)
-			hook_vel -= diff.normalized()
+		elif hook.connected:
+			hook.get_node("Connector").global_position = global_position
+			if hook.flying == false:
+				hook_vel -= (position - hook.position).normalized()
 	
-	velocity = (vel.normalized() * SPEED) + (hook_vel * SPEED)
+	velocity = (hook_vel * SPEED)
+	if Global.can_move:
+		velocity += (vel.normalized() * SPEED)
 	
 	if vel.length() > 0:
 		rotation = vel.angle()
