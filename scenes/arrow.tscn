@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4nscd8qhdvh4"]
 
-[ext_resource type="Script" path="res://scenes/arrow.gd" id="1_r584j"]
+[ext_resource type="Script" path="res://scripts/arrow.gd" id="1_r584j"]
 [ext_resource type="Texture2D" uid="uid://ckeu86tupei7h" path="res://art/arrow.png" id="1_swu37"]
 
 [node name="Arrow" type="Area2D"]
