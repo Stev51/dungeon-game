@@ -6,17 +6,18 @@
 [node name="Arrow" type="Area2D"]
 script = ExtResource("1_r584j")
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.5708
+polygon = PackedVector2Array(0, -30, -8, -23, -10, -7, 10, -7, 8, -23)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 texture = ExtResource("1_swu37")
 
-[node name="HurtCollision" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtCollision"]
-rotation = 1.5708
-polygon = PackedVector2Array(0, -30, -8, -23, -10, -7, 10, -7, 8, -23)
-
 [node name="DespawnCollision" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DespawnCollision"]
-polygon = PackedVector2Array(25, -1, 22, -4, 18, -4, 16, -6, 15, -6, 14, -5, 14, 0, 10, 3, 10, 5, 11, 6, 16, 6, 18, 4, 22, 4, 25, 1)
+polygon = PackedVector2Array(24, -2, 22, -4, 13, -4, 13, 4, 22, 4, 24, 2)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="DespawnCollision" to="." method="_on_despawn_collision_body_entered"]
