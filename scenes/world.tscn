@@ -245,24 +245,24 @@ position = Vector2(300, 150)
 polygon = PackedVector2Array(2725, -1175, 2775, -1175, 2775, -1125, 2725, -1125)
 
 [node name="Objects1" type="CollisionPolygon2D" parent="WallCollisions"]
-polygon = PackedVector2Array(400, -925, 375, -900, 400, -875, 425, -900)
+polygon = PackedVector2Array(387, -913, 387, -888, 412, -888, 412, -913)
 
 [node name="Objects2" type="CollisionPolygon2D" parent="WallCollisions"]
 position = Vector2(0, 1200)
-polygon = PackedVector2Array(400, -925, 375, -900, 400, -875, 425, -900)
+polygon = PackedVector2Array(387, -913, 387, -888, 412, -888, 412, -913)
 
 [node name="Objects3" type="CollisionPolygon2D" parent="WallCollisions"]
 position = Vector2(1600, 950)
-polygon = PackedVector2Array(400, -925, 375, -900, 400, -875, 425, -900)
+polygon = PackedVector2Array(387, -913, 387, -888, 412, -888, 412, -913)
 
 [node name="Objects4" type="CollisionPolygon2D" parent="WallCollisions"]
 position = Vector2(2400, 0)
-polygon = PackedVector2Array(400, -925, 375, -900, 400, -875, 425, -900)
+polygon = PackedVector2Array(387, -913, 387, -888, 412, -888, 412, -913)
 
 [node name="Objects5" type="CollisionPolygon2D" parent="WallCollisions"]
 position = Vector2(2400, 600)
-polygon = PackedVector2Array(400, -925, 375, -900, 400, -875, 425, -900)
+polygon = PackedVector2Array(387, -913, 387, -888, 412, -888, 412, -913)
 
 [node name="Objects6" type="CollisionPolygon2D" parent="WallCollisions"]
 position = Vector2(2400, 1200)
-polygon = PackedVector2Array(400, -925, 375, -900, 400, -875, 425, -900)
+polygon = PackedVector2Array(387, -913, 387, -888, 412, -888, 412, -913)

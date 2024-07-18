@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_qlg51"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eqnfm"]
-radius = 25.0
+radius = 24.0208
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_00upx")
