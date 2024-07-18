@@ -17,7 +17,6 @@ texture = ExtResource("1_je01d")
 shape = SubResource("CircleShape2D_eqnfm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(200, 0)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("3_qlg51")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4nscd8qhdvh4"]
+
+[ext_resource type="Texture2D" uid="uid://ckeu86tupei7h" path="res://art/arrow.png" id="1_swu37"]
+
+[node name="Arrow" type="Area2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -30, -8, -23, -10, -7, 10, -7, 8, -23)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_swu37")
