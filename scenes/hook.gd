@@ -30,13 +30,13 @@ func deactivate():
 	active = false
 	$Line2D.queue_free()
 	$Connector.queue_free()
-	print("deactivated")
 
 func _on_body_entered(body):
-	if body.is_in_group("walls"):
+	if body.is_in_group("colliders"):
 		flying = false
-	elif body.is_in_group("doors"):
-		queue_free()
+		if get_parent() != null:
+			if $DespawnCollision.overlaps_body(get_parent().get_node("Player")):
+				deactivate()
 
 func _on_area_exited(area):
 	if area.is_in_group("screen"):
