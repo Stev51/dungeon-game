@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dgmmhfu7teqsh" path="res://art/hook.png" id="1_to2l7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_er1pn"]
-radius = 3.0
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_721ll"]
 radius = 3.0
