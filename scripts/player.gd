@@ -4,14 +4,16 @@ const SPEED = 300.0
 const HOOK_SPEED = 300.0
 
 var tree
+var health = 3
 var vel = Vector2.ZERO
 var hook_vel = Vector2.ZERO
 var can_shoot = true
+var respawn_pos
 var hooks
-var diff
 
 func _ready():
 	tree = get_tree()
+	respawn_pos = position
 	$Camera2D.set_as_top_level(true)
 
 func _physics_process(delta):
@@ -70,6 +72,13 @@ func screen_update():
 		Global.current_screen_pos = screen * Global.SCREEN_SIZE + Global.SCREEN_SIZE * 0.5
 		
 		$Camera2D.global_position = Global.current_screen_pos
+
+func hurt():
+	health -= 1
+
+func respawn():
+	hurt()
+	position = respawn_pos
 
 func _on_arrow_cooldown_timeout():
 	can_shoot = true

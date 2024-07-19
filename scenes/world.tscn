@@ -300,8 +300,47 @@ polygon = PackedVector2Array(1575, -950, 1600, -950, 1600, -850, 1575, -850)
 position = Vector2(800, 1200)
 polygon = PackedVector2Array(1575, -950, 1600, -950, 1600, -850, 1575, -850)
 
+[node name="ChasmArea" type="Area2D" parent="."]
+
+[node name="Chasm1" type="CollisionPolygon2D" parent="ChasmArea"]
+polygon = PackedVector2Array(1625, -575, 1625, -300, 1900, -300, 1900, -25, 2375, -25, 2375, -300, 2100, -300, 2100, -575)
+
+[node name="Chasm2" type="CollisionPolygon2D" parent="ChasmArea"]
+polygon = PackedVector2Array(1625, 75, 1625, 150, 1900, 150, 1900, 450, 1625, 450, 1625, 575, 2375, 575, 2375, 450, 2100, 450, 2100, 150, 2375, 150, 2375, 75)
+
+[node name="Checkpoint1" type="Area2D" parent="."]
+position = Vector2(1650, -150)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoint1"]
+polygon = PackedVector2Array(-50, -50, 25, -50, 25, 50, -50, 50)
+
+[node name="Checkpoint2" type="Area2D" parent="."]
+position = Vector2(2350, -450)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoint2"]
+polygon = PackedVector2Array(50, -50, -25, -50, -25, 50, 50, 50)
+
+[node name="Checkpoint3" type="Area2D" parent="."]
+position = Vector2(1650, 300)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoint3"]
+polygon = PackedVector2Array(-50, -50, 25, -50, 25, 50, -50, 50)
+
+[node name="Checkpoint4" type="Area2D" parent="."]
+position = Vector2(2350, 300)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoint4"]
+polygon = PackedVector2Array(50, -50, -25, -50, -25, 50, 50, 50)
+
 [node name="CurrentScreen" type="Area2D" parent="." groups=["screen"]]
 position = Vector2(400, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScreen"]
 shape = SubResource("RectangleShape2D_jbauc")
+
+[connection signal="body_entered" from="ChasmArea" to="." method="_on_chasm_area_body_entered"]
+[connection signal="body_exited" from="ChasmArea" to="." method="_on_chasm_area_body_exited"]
+[connection signal="body_entered" from="Checkpoint1" to="." method="_on_checkpoint_1_body_entered"]
+[connection signal="body_entered" from="Checkpoint2" to="." method="_on_checkpoint_2_body_entered"]
+[connection signal="body_entered" from="Checkpoint3" to="." method="_on_checkpoint_3_body_entered"]
+[connection signal="body_entered" from="Checkpoint4" to="." method="_on_checkpoint_4_body_entered"]

@@ -6,6 +6,7 @@ var current_screen = SCREEN_SIZE * 0.5
 var current_screen_pos = current_screen * SCREEN_SIZE + SCREEN_SIZE * 0.5
 var attacking = false
 var can_move = true
+var over_chasm = false
 
 func new_arrow(pos, rot, shot):
 	
