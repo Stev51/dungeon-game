@@ -35,7 +35,7 @@ func move_player():
 	hook_vel = Vector2.ZERO
 	hooks = tree.get_nodes_in_group("hooks")
 	for hook in hooks:
-		if hook.connected:
+		if hook.connected and hook.active:
 			hook.get_node("Connector").global_position = global_position
 			if not hook.flying:
 				hook_vel -= (position - hook.position).normalized()

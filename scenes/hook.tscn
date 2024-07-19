@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dgmmhfu7teqsh" path="res://art/hook.png" id="1_to2l7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_er1pn"]
-radius = 8.0
+radius = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_721ll"]
 radius = 3.0
@@ -31,6 +31,7 @@ default_color = Color(0.498039, 0, 0, 1)
 shape = SubResource("CircleShape2D_er1pn")
 
 [node name="DespawnCollision" type="Area2D" parent="."]
+position = Vector2(2, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DespawnCollision"]
 shape = SubResource("CircleShape2D_721ll")
