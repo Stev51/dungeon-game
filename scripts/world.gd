@@ -1,6 +1,7 @@
 extends Node2D
 
 var tree
+var chasm_disabled
 
 func _ready():
 	tree = get_tree()
@@ -15,13 +16,25 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("debug"):
 		print("--- DEBUG ---")
-		print("over_chasm: ", Global.over_chasm)
 		print("can_move: ", Global.can_move)
-		print("HookContainer children: ", $HookContainer.get_children().size())
+		print("attacking: ", Global.attacking)
+		print("over_chasm: ", Global.over_chasm)
+		print("chasm_disabled: ", chasm_disabled)
+
+func chasm_disable():
+	if not chasm_disabled:
+		chasm_disabled = true
+		for poly in $ChasmCollision.get_children():
+			poly.set_deferred("disabled",true)
+
+func chasm_enable():
+	if tree.get_nodes_in_group("connected").size() <= 0:
+		chasm_disabled = false
+		for poly in $ChasmCollision.get_children():
+			poly.set_deferred("disabled",false)
 
 func checkpoint(area):
 	$Player.respawn_pos = area.position
-	print("set checkpoint to ", area.name)
 
 func _on_chasm_area_body_entered(body):
 	if body.is_in_group("player"):

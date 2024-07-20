@@ -10,6 +10,7 @@ var hook_vel = Vector2.ZERO
 var can_shoot = true
 var respawn_pos
 var hooks
+var debug = false
 
 func _ready():
 	tree = get_tree()
@@ -17,10 +18,17 @@ func _ready():
 	$Camera2D.set_as_top_level(true)
 
 func _physics_process(delta):
+	
 	move_player()
 	spawn_arrows()
 	spawn_hooks()
 	screen_update()
+	
+	if Input.is_action_just_pressed("debug"):
+		$Camera2D/Label.visible = not $Camera2D/Label.visible
+		debug = not debug
+	if debug:
+		$Camera2D/Label.text = str(Performance.get_monitor(Performance.TIME_FPS)) + " FPS"
 
 func move_player():
 	
@@ -79,7 +87,6 @@ func hurt():
 func respawn():
 	hurt()
 	position = respawn_pos
-	print("respawned!")
 
 func _on_arrow_cooldown_timeout():
 	can_shoot = true

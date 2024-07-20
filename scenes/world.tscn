@@ -103,7 +103,7 @@ layer_2/tile_data = PackedInt32Array(393224, 5, 0, 65576, 65541, 0, 393272, 5, 0
 
 [node name="Player" parent="." instance=ExtResource("1_tux68")]
 z_index = 1
-position = Vector2(400, 500)
+position = Vector2(1700, 300)
 rotation = 4.71239
 
 [node name="Sword" parent="Player" instance=ExtResource("5_0o10l")]
@@ -306,6 +306,14 @@ polygon = PackedVector2Array(1575, -950, 1600, -950, 1600, -850, 1575, -850)
 polygon = PackedVector2Array(1625, -575, 1625, -300, 1900, -300, 1900, -25, 2375, -25, 2375, -300, 2100, -300, 2100, -575)
 
 [node name="Chasm2" type="CollisionPolygon2D" parent="ChasmArea"]
+polygon = PackedVector2Array(1625, 75, 1625, 150, 1900, 150, 1900, 450, 1625, 450, 1625, 575, 2375, 575, 2375, 450, 2100, 450, 2100, 150, 2375, 150, 2375, 75)
+
+[node name="ChasmCollision" type="StaticBody2D" parent="."]
+
+[node name="Chasm1" type="CollisionPolygon2D" parent="ChasmCollision"]
+polygon = PackedVector2Array(1625, -575, 1625, -300, 1900, -300, 1900, -25, 2375, -25, 2375, -300, 2100, -300, 2100, -575)
+
+[node name="Chasm2" type="CollisionPolygon2D" parent="ChasmCollision"]
 polygon = PackedVector2Array(1625, 75, 1625, 150, 1900, 150, 1900, 450, 1625, 450, 1625, 575, 2375, 575, 2375, 450, 2100, 450, 2100, 150, 2375, 150, 2375, 75)
 
 [node name="Checkpoint1" type="Area2D" parent="."]

@@ -8,6 +8,7 @@ var connector_vel
 var active = true
 var flying = true
 var connected = true
+var chasm
 
 func _ready():
 	velocity = Vector2(1, 0).rotated(rotation)
@@ -31,10 +32,20 @@ func deactivate():
 	active = false
 	$Line2D.queue_free()
 	$Connector.queue_free()
+	if get_parent() != null:
+		get_parent().chasm_enable()
 
 func disconnect_me():
 	connected = false
 	remove_from_group("connected")
+	if get_parent() != null:
+		get_parent().chasm_enable()
+
+func self_free():
+	remove_from_group("connected")
+	if get_parent() != null:
+		get_parent().chasm_enable()
+	queue_free()
 
 func _on_body_entered(body):
 	if body.is_in_group("colliders"):
@@ -42,10 +53,12 @@ func _on_body_entered(body):
 		if get_parent() != null:
 			if $DespawnCollision.overlaps_body(get_parent().get_node("Player")):
 				deactivate()
+			if connected:
+				get_parent().chasm_disable()
 
 func _on_area_exited(area):
 	if area.is_in_group("screen"):
-		queue_free()
+		self_free()
 
 func _on_despawn_collision_body_entered(body):
 	if active:
