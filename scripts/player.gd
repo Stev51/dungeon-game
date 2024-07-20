@@ -79,6 +79,7 @@ func hurt():
 func respawn():
 	hurt()
 	position = respawn_pos
+	print("respawned!")
 
 func _on_arrow_cooldown_timeout():
 	can_shoot = true

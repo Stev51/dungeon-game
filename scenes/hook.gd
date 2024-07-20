@@ -14,8 +14,9 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if Input.is_action_just_pressed("release_hooks") and connected:
-		connected = false
+	if Input.is_action_just_pressed("release_hooks"):
+		if connected and Global.can_move:
+			disconnect_me()
 	
 	if flying:
 		position += velocity * SPEED * delta
@@ -31,6 +32,10 @@ func deactivate():
 	$Line2D.queue_free()
 	$Connector.queue_free()
 
+func disconnect_me():
+	connected = false
+	remove_from_group("connected")
+
 func _on_body_entered(body):
 	if body.is_in_group("colliders"):
 		flying = false
@@ -45,6 +50,7 @@ func _on_area_exited(area):
 func _on_despawn_collision_body_entered(body):
 	if active:
 		if not flying and body.is_in_group("player"):
+			disconnect_me()
 			deactivate()
 
 func _on_despawn_collision_area_entered(area):

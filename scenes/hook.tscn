@@ -9,7 +9,7 @@ radius = 5.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_721ll"]
 radius = 3.0
 
-[node name="Hook" type="Area2D" groups=["hooks"]]
+[node name="Hook" type="Area2D" groups=["connected", "hooks"]]
 script = ExtResource("1_2rg5f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
