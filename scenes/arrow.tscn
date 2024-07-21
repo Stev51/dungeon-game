@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/arrow.gd" id="1_r584j"]
 [ext_resource type="Texture2D" uid="uid://ckeu86tupei7h" path="res://art/arrow.png" id="1_swu37"]
 
-[node name="Arrow" type="Area2D"]
+[node name="Arrow" type="Area2D" groups=["arrows"]]
 script = ExtResource("1_r584j")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

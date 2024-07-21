@@ -1,6 +1,7 @@
 extends Node2D
 
 var tree
+var boss_switches = 0
 var chasm_disabled
 
 func _ready():
@@ -38,6 +39,17 @@ func chasm_enable():
 func checkpoint(area):
 	$Player.respawn_pos = area.position
 
+func switch_process(switch, tile_pos):
+	switch.queue_free()
+
+func door_process(door, tile_pos, new_tile):
+	door.queue_free()
+
+func incr_boss_switches():
+	boss_switches += 1
+	if boss_switches >= 4:
+		door_process($DoorCollisions/Doors3, null)
+
 func _on_chasm_area_body_entered(body):
 	if body.is_in_group("player"):
 		Global.over_chasm = true
@@ -65,3 +77,38 @@ func _on_checkpoint_3_body_entered(body):
 func _on_checkpoint_4_body_entered(body):
 	if body.is_in_group("player"):
 		checkpoint($Checkpoints/Checkpoint4)
+
+# Same thing VVV
+
+func _on_switch_1_area_entered(area):
+	if area.is_in_group("sword") and Global.attacking:
+		switch_process($Switches/Switch1, null)
+		incr_boss_switches()
+
+func _on_switch_2_area_entered(area):
+	if area.is_in_group("sword") and Global.attacking:
+		switch_process($Switches/Switch2, null)
+		incr_boss_switches()
+
+func _on_switch_3_area_entered(area):
+	if area.is_in_group("sword") and Global.attacking:
+		switch_process($Switches/Switch3, null)
+		incr_boss_switches()
+
+func _on_switch_4_area_entered(area):
+	if area.is_in_group("sword") and Global.attacking:
+		switch_process($Switches/Switch4, null)
+		door_process($DoorCollisions/Doors4, null)
+		door_process($DoorCollisions/Doors5, null)
+		incr_boss_switches()
+
+func _on_switch_5_area_entered(area):
+	if area.is_in_group("sword") and Global.attacking:
+		switch_process($Switches/Switch5, null)
+		door_process($DoorCollisions/Doors2, null)
+
+func _on_arrow_switch_1_area_entered(area):
+	if area.is_in_group("arrows"):
+		area.queue_free()
+		switch_process($Switches/ArrowSwitch1, null)
+		door_process($DoorCollisions/Doors7, null)

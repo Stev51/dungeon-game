@@ -35,6 +35,7 @@ screen=""
 hooks=""
 player=""
 connected=""
+arrows=""
 
 [input]
 
