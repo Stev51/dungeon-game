@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyBase" load_steps=3 format=3 uid="uid://pg8ifvhrs5o4"]
+
+[ext_resource type="Script" path="res://scripts/enemy_base.gd" id="1_lgdsg"]
+[ext_resource type="Texture2D" uid="uid://d25x60e35kwpw" path="res://art/enemies/pawn.png" id="2_p33di"]
+
+[resource]
+script = ExtResource("1_lgdsg")
+texture = ExtResource("2_p33di")
+health = 5

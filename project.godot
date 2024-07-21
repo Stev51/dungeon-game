@@ -36,6 +36,7 @@ hooks=""
 player=""
 connected=""
 arrows=""
+enemies=""
 
 [input]
 
