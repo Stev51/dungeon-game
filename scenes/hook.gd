@@ -52,6 +52,7 @@ func _on_body_entered(body):
 		flying = false
 		if get_parent() != null:
 			if $DespawnCollision.overlaps_body(get_parent().get_node("Player")):
+				disconnect_me()
 				deactivate()
 			if connected:
 				get_parent().chasm_disable()

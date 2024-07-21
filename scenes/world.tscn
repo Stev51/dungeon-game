@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ri1w7knpqpjs"]
+[gd_scene load_steps=13 format=3 uid="uid://ri1w7knpqpjs"]
 
 [ext_resource type="Texture2D" uid="uid://cmmbkmt5lwypv" path="res://art/tilesets/floor.png" id="1_jlmcv"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tgiwq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cawgx28605iib" path="res://art/tilesets/objects.png" id="2_trxh1"]
 [ext_resource type="Texture2D" uid="uid://chrg10rf854bx" path="res://art/tilesets/walls.png" id="3_yy81v"]
 [ext_resource type="PackedScene" uid="uid://ff0jpga6qtny" path="res://scenes/sword.tscn" id="5_0o10l"]
+[ext_resource type="Texture2D" uid="uid://bt6bbqb7gyorf" path="res://art/enemies/king.png" id="7_bk80l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lp3tf"]
 texture = ExtResource("1_jlmcv")
@@ -103,12 +104,18 @@ layer_2/tile_data = PackedInt32Array(393224, 5, 0, 65576, 65541, 0, 393272, 5, 0
 
 [node name="Player" parent="." instance=ExtResource("1_tux68")]
 z_index = 1
-position = Vector2(1700, 300)
+position = Vector2(400, 500)
 rotation = 4.71239
 
 [node name="Sword" parent="Player" instance=ExtResource("5_0o10l")]
 visible = false
 z_index = -1
+
+[node name="CurrentScreen" type="Area2D" parent="." groups=["screen"]]
+position = Vector2(400, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScreen"]
+shape = SubResource("RectangleShape2D_jbauc")
 
 [node name="WallCollisions" type="StaticBody2D" parent="." groups=["colliders", "walls"]]
 
@@ -313,42 +320,48 @@ polygon = PackedVector2Array(1625, 75, 1625, 150, 1900, 150, 1900, 450, 1625, 45
 [node name="Chasm1" type="CollisionPolygon2D" parent="ChasmCollision"]
 polygon = PackedVector2Array(1625, -575, 1625, -300, 1900, -300, 1900, -25, 2375, -25, 2375, -300, 2100, -300, 2100, -575)
 
+[node name="Sprite2D" type="Sprite2D" parent="ChasmCollision/Chasm1"]
+visible = false
+position = Vector2(2000, -300)
+texture = ExtResource("7_bk80l")
+
 [node name="Chasm2" type="CollisionPolygon2D" parent="ChasmCollision"]
 polygon = PackedVector2Array(1625, 75, 1625, 150, 1900, 150, 1900, 450, 1625, 450, 1625, 575, 2375, 575, 2375, 450, 2100, 450, 2100, 150, 2375, 150, 2375, 75)
 
-[node name="Checkpoint1" type="Area2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="ChasmCollision/Chasm2"]
+visible = false
+position = Vector2(2000, 300)
+texture = ExtResource("7_bk80l")
+
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="Checkpoint1" type="Area2D" parent="Checkpoints"]
 position = Vector2(1650, -150)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoint1"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoints/Checkpoint1"]
 polygon = PackedVector2Array(-50, -50, 25, -50, 25, 50, -50, 50)
 
-[node name="Checkpoint2" type="Area2D" parent="."]
+[node name="Checkpoint2" type="Area2D" parent="Checkpoints"]
 position = Vector2(2350, -450)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoint2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoints/Checkpoint2"]
 polygon = PackedVector2Array(50, -50, -25, -50, -25, 50, 50, 50)
 
-[node name="Checkpoint3" type="Area2D" parent="."]
+[node name="Checkpoint3" type="Area2D" parent="Checkpoints"]
 position = Vector2(1650, 300)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoint3"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoints/Checkpoint3"]
 polygon = PackedVector2Array(-50, -50, 25, -50, 25, 50, -50, 50)
 
-[node name="Checkpoint4" type="Area2D" parent="."]
+[node name="Checkpoint4" type="Area2D" parent="Checkpoints"]
 position = Vector2(2350, 300)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoint4"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoints/Checkpoint4"]
 polygon = PackedVector2Array(50, -50, -25, -50, -25, 50, 50, 50)
-
-[node name="CurrentScreen" type="Area2D" parent="." groups=["screen"]]
-position = Vector2(400, 300)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentScreen"]
-shape = SubResource("RectangleShape2D_jbauc")
 
 [connection signal="body_entered" from="ChasmArea" to="." method="_on_chasm_area_body_entered"]
 [connection signal="body_exited" from="ChasmArea" to="." method="_on_chasm_area_body_exited"]
-[connection signal="body_entered" from="Checkpoint1" to="." method="_on_checkpoint_1_body_entered"]
-[connection signal="body_entered" from="Checkpoint2" to="." method="_on_checkpoint_2_body_entered"]
-[connection signal="body_entered" from="Checkpoint3" to="." method="_on_checkpoint_3_body_entered"]
-[connection signal="body_entered" from="Checkpoint4" to="." method="_on_checkpoint_4_body_entered"]
+[connection signal="body_entered" from="Checkpoints/Checkpoint1" to="." method="_on_checkpoint_1_body_entered"]
+[connection signal="body_entered" from="Checkpoints/Checkpoint2" to="." method="_on_checkpoint_2_body_entered"]
+[connection signal="body_entered" from="Checkpoints/Checkpoint3" to="." method="_on_checkpoint_3_body_entered"]
+[connection signal="body_entered" from="Checkpoints/Checkpoint4" to="." method="_on_checkpoint_4_body_entered"]

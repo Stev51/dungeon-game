@@ -25,13 +25,15 @@ func chasm_disable():
 	if not chasm_disabled:
 		chasm_disabled = true
 		for poly in $ChasmCollision.get_children():
-			poly.set_deferred("disabled",true)
+			poly.set_deferred("disabled", true)
+			#poly.get_node("Sprite2D").visible = false
 
 func chasm_enable():
 	if tree.get_nodes_in_group("connected").size() <= 0:
 		chasm_disabled = false
 		for poly in $ChasmCollision.get_children():
-			poly.set_deferred("disabled",false)
+			poly.set_deferred("disabled", false)
+			#poly.get_node("Sprite2D").visible = true
 
 func checkpoint(area):
 	$Player.respawn_pos = area.position
@@ -46,18 +48,20 @@ func _on_chasm_area_body_exited(body):
 		Global.over_chasm = false
 		Global.can_move = true
 
+# Maybe find some way to clean this up to be more universal VVV
+
 func _on_checkpoint_1_body_entered(body):
 	if body.is_in_group("player"):
-		checkpoint($Checkpoint1)
+		checkpoint($Checkpoints/Checkpoint1)
 
 func _on_checkpoint_2_body_entered(body):
 	if body.is_in_group("player"):
-		checkpoint($Checkpoint2)
+		checkpoint($Checkpoints/Checkpoint2)
 
 func _on_checkpoint_3_body_entered(body):
 	if body.is_in_group("player"):
-		checkpoint($Checkpoint3)
+		checkpoint($Checkpoints/Checkpoint3)
 
 func _on_checkpoint_4_body_entered(body):
 	if body.is_in_group("player"):
-		checkpoint($Checkpoint4)
+		checkpoint($Checkpoints/Checkpoint4)
