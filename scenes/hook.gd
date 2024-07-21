@@ -48,7 +48,7 @@ func self_free():
 	queue_free()
 
 func _on_body_entered(body):
-	if body.is_in_group("colliders"):
+	if body.is_in_group("walls"):
 		flying = false
 		if get_parent() != null:
 			if $DespawnCollision.overlaps_body(get_parent().get_node("Player")):
@@ -56,6 +56,8 @@ func _on_body_entered(body):
 				deactivate()
 			if connected:
 				get_parent().chasm_disable()
+	elif body.is_in_group("doors"):
+		self_free()
 
 func _on_area_exited(area):
 	if area.is_in_group("screen"):
