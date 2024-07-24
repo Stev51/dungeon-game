@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const HOOK_SPEED = 300.0
+var health_textures = [load("res://art/heart0.png"), load("res://art/heart1.png"), load("res://art/heart2.png"), load("res://art/heart3.png")]
 
 var tree
 var health = 3
@@ -24,7 +25,10 @@ func _physics_process(delta):
 	spawn_hooks()
 	screen_update()
 	
+	$HealthSprite.position = position + Vector2(0, -40)
+	
 	if Input.is_action_just_pressed("debug"):
+		hurt()
 		$Camera2D/Label.visible = not $Camera2D/Label.visible
 		debug = not debug
 	if debug:
@@ -82,7 +86,19 @@ func screen_update():
 		$Camera2D.global_position = Global.current_screen_pos
 
 func hurt():
-	health -= 1
+	if health > 0:
+		health -= 1
+		update_health()
+		if health <= 0:
+			pass # GAME OVER
+
+func heal():
+	if health < 3:
+		health += 1
+		update_health()
+
+func update_health():
+	$HealthSprite.set_texture(health_textures[health])
 
 func respawn():
 	hurt()

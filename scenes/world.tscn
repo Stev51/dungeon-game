@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ri1w7knpqpjs"]
+[gd_scene load_steps=9 format=3 uid="uid://ri1w7knpqpjs"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tgiwq"]
 [ext_resource type="PackedScene" uid="uid://bwko43sts5apv" path="res://scenes/player.tscn" id="1_tux68"]
 [ext_resource type="TileSet" uid="uid://vn4txdnlufok" path="res://world.tres" id="2_aillb"]
 [ext_resource type="PackedScene" uid="uid://ff0jpga6qtny" path="res://scenes/sword.tscn" id="5_0o10l"]
 [ext_resource type="PackedScene" uid="uid://btuxqumujajh5" path="res://scenes/enemy.tscn" id="5_qh4pg"]
-[ext_resource type="Resource" uid="uid://b26rgn3h7op1i" path="res://resources/dummy.tres" id="6_11ff2"]
 [ext_resource type="Texture2D" uid="uid://bt6bbqb7gyorf" path="res://art/enemies/king.png" id="7_bk80l"]
 [ext_resource type="Resource" uid="uid://pg8ifvhrs5o4" path="res://resources/pawn.tres" id="7_iif57"]
 
@@ -41,7 +40,7 @@ z_index = -1
 
 [node name="TestEnemy1" parent="Enemies" instance=ExtResource("5_qh4pg")]
 position = Vector2(100, 100)
-resource = ExtResource("6_11ff2")
+resource = ExtResource("7_iif57")
 
 [node name="TestEnemy2" parent="Enemies" instance=ExtResource("5_qh4pg")]
 position = Vector2(700, 100)

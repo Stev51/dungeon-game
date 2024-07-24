@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var resource : Resource
 
-var health = 1
+var health = 10
 
 func _ready():
 	
